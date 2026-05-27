@@ -1,16 +1,3 @@
-可以，最后给你一个**轻量、清晰、可落地版**。
-
-我理解你的最终架构应该是：
-
-```text
-图片和 caption 最终一起打进 WebDataset shard；
-ES 管训练前检索、筛选、审核；
-Milvus 管相似检索和去重；
-Manifest 只保存本次训练用哪些 shard。
-```
-
----
-
 # 10B 图像预训练数据 Pipeline
 
 ## 1. 数据下载
@@ -455,5 +442,3 @@ Manifest 固定每次训练用哪些 shard。
 相似检索在 Milvus，
 训练版本在 manifest。
 ```
-
-这个方案比“Parquet 主表 + patch + 多层湖表”轻很多，也更适合你现在这个 10B 图像预训练场景。
